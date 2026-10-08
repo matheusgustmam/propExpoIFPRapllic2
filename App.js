@@ -11,12 +11,15 @@ const Tabs = createBottomTabNavigator();
 
 export default function App() {
   
-  const [usuarioLogado, setUsuarioLogado] = useState({})
+  const [usuarioLogado, setUsuarioLogado] = useState(null)
 
   async function registerOnAuthStateChange() {
-    
+    registerOnAuthStateChange(auth, (usuario) => {setUsuarioLogado(usuario)})
   }
   
+  useEffect(() =>
+  )
+
   return (
     <PaperProvider>
       <NavigationContainer>
