@@ -10,10 +10,14 @@ export default class BaseModel {
     }
 
     toFirestore(){
-
+        const { ...dados } = this;
+        return dados;
     }
 
-    fromFirestore(){
-        
+    fromFirestore(snapshot: any, options: any){
+        const dados = snapshot.data(options);
+        this.id = dados.id || null;
+        this.criadoEm = dados.criadoEm || new Date();
+        this.atualizadoEm = dados.atualizadoEm || new Date();
     }
 }    
