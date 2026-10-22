@@ -1,9 +1,9 @@
-export default class BaseModel {
-    id: string; | null ;
-    criadoEm: Date ;
-    atualizadoEm: Date ;
+export default abstract class BaseModel {
+    private id: string; | null ;
+    private criadoEm: Date ;
+    private atualizadoEm: Date ;
 
-    constructor(dadis?: any) {
+    constructor(dados?: any) {
         this.id = dado?.id || null
         this.criadoEm = new Date()
         this.atualizadoEm = new Date()
@@ -16,8 +16,9 @@ export default class BaseModel {
 
     fromFirestore(snapshot: any, options: any){
         const dados = snapshot.data(options);
-        this.id = dados.id || null;
+        this.id = dados.id || null
         this.criadoEm = dados.criadoEm || new Date();
         this.atualizadoEm = dados.atualizadoEm || new Date();
+        return this
     }
 }    
