@@ -30,6 +30,7 @@ function useAuthService() {
     const loginEmailSenha = async (usuario) => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, usuario.email, usuario.senha);
+            const usaurioEncontrado = usuarioRepository.buscarId(userCredential.user.uid)
             return userCredential
         } catch (error) {
             throw error;
@@ -43,6 +44,11 @@ function useAuthService() {
             throw error;
         }
     }
+
+    const buscarUsuario = async (id) =>{
+        
+    }
+
 
     return { cadastrarEmailSenha, loginEmailSenha, recuperarSenha };
 }
