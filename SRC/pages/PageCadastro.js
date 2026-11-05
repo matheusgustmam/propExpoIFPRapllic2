@@ -12,9 +12,22 @@ function PageCadastro(){
     const {cadastrarEmailSenha} = useAuthService();
     const navigation = useNavigation();
 
+    function handleOnChangeText(){
+        const novoUsuario = new Usuario({
+            ...usuario,
+            [campo]: texto
+        })
+        setUsuario(novoUsuario)
+        }
+    }
+
     async function CadastrarUsuario() {
         try{
             setLoading(true)
+            const usuarioCompleto = new Usuario({
+                ...usuario,
+                endereco: endereco,
+            })
             await cadastrarEmail(usuario)
             alert("Cadastro realizado com sucesso!")
         } catch (err){
@@ -34,7 +47,7 @@ function PageCadastro(){
                         label ="Nome Completo"
                         placeholder="Insira seu nome completo."
                         value={usuario.nome}
-                        onChangeText={(text) => setUsuario({ ...usuario, nome: text})}
+                        onChangeText={(text) => handleOnChangeText('nome', text)}
                     />
                     <TextInput
                         labe="E-mail:"
