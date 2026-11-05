@@ -34,7 +34,7 @@ export default class Usuario extends BaseModel {
     }
     
     getNome(){
-        retorn
+        return
     }
 
 }
