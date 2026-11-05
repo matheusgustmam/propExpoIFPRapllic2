@@ -14,6 +14,7 @@ function useAuthService() {
     const cadastrarEmailSenha = async (usuario) => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, usuario.email, usuario.senha);
+            
             usuario.setId(userCredential.user.uid)
             await usuarioRepository.salvar(usuario)
 
